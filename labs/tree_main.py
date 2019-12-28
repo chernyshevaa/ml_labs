@@ -4,7 +4,7 @@ ds_num = "05"
 
 max_high = 50
 
-arr = [12, 11, 13]
+arr = [1,2,3,4,5]
 for j in arr:
     if j < 10:
         ds_num = "0" + str(j)
@@ -26,7 +26,7 @@ for j in arr:
             f_prev = f_macro
             c = 0
 
-        f = open("result_train.txt", "a+")
+        f = open("result_one_middle.txt", "a+")
         f.write(result)
         f.write('\n')
         f.close()

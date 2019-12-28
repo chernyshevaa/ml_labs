@@ -25,30 +25,41 @@ def tree(ds_num, h):
     classes = []
     data_arr = []
 
+    sqrt_n = int(math.sqrt(n))
+    random_n = []
+    for i in range(sqrt_n):
+        random_n.append(random.randint(1, n-1))
+
+
+    new_number = 0
     for i in range(n):
-        line = f.readline()
-        line_int = line.split(' ')
+        if i in random_n:
+            line = f.readline()
+            line_int = line.split(' ')
 
-        row = []
-        for x in line_int:
-            row.append(int(x))
+            row = []
+            for x in line_int:
+                row.append(int(x))
 
-        obj = {}
-        obj["c"] = line_int[m]
-        line_int.pop(m)
-        obj["f"] = line_int
+            obj = {}
+            obj["c"] = line_int[m]
+            line_int.pop(m)
+            obj["f"] = line_int
 
-        data[i] = obj
+            data[i] = obj
 
-        classes.append(obj["c"])
-        data_arr.append(row)
+            classes.append(obj["c"])
+            data_arr.append(row)
+            new_number += 1
 
     f.close()
 
+    n = new_number
+
     num_attributes = m
     num_classes = k
-    tree_high = h + 1
-    # tree_high = 5
+    # tree_high = h + 1
+    tree_high = 50
 
     attributes = []
     for i in range(m):
@@ -62,7 +73,7 @@ def tree(ds_num, h):
     # for node_str in print_tree:
     #     print(node_str)
 
-    f = open("trees/tree_" + ds_num, "w+")
+    f = open("rf/tree_" + ds_num + "_" + str(h), "w+")
     f.write(str(len(print_tree)))
     f.write('\n')
     for node_str in print_tree:
